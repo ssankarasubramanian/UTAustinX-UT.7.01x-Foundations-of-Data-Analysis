@@ -21,7 +21,7 @@ How many of the cyclists were students, how often did they ride, and what was th
 #Loading the datasets through SDSFoundations package
 library(SDSFoundations)
 bike <- BikeData 
-#Following command gives the data structure of BikeData dataset
+#Following command gives the documentation of BikeData dataset
 ?BikeData
 ```
 

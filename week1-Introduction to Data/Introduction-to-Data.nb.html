@@ -181,11 +181,11 @@ $(document).ready(function () {
 <p>How many of the cyclists were students, how often did they ride, and what was the average distance they rode?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0xvYWRpbmcgdGhlIGRhdGFzZXRzIHRocm91Z2ggU0RTRm91bmRhdGlvbnMgcGFja2FnZVxubGlicmFyeShTRFNGb3VuZGF0aW9ucylcbmJpa2UgPC0gQmlrZURhdGEgXG4jRm9sbG93aW5nIGNvbW1hbmQgZ2l2ZXMgdGhlIGRhdGEgc3RydWN0dXJlIG9mIEJpa2VEYXRhIGRhdGFzZXRcbj9CaWtlRGF0YVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0xvYWRpbmcgdGhlIGRhdGFzZXRzIHRocm91Z2ggU0RTRm91bmRhdGlvbnMgcGFja2FnZVxubGlicmFyeShTRFNGb3VuZGF0aW9ucylcbmJpa2UgPC0gQmlrZURhdGEgXG4jRm9sbG93aW5nIGNvbW1hbmQgZ2l2ZXMgdGhlIGRvY3VtZW50YXRpb24gb2YgQmlrZURhdGEgZGF0YXNldFxuP0Jpa2VEYXRhXG5gYGAifQ== -->
 <pre class="r"><code>#Loading the datasets through SDSFoundations package
 library(SDSFoundations)
 bike &lt;- BikeData 
-#Following command gives the data structure of BikeData dataset
+#Following command gives the documentation of BikeData dataset
 ?BikeData</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -197,6 +197,9 @@ bike &lt;- BikeData
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYmlrZVs3LF0kYWdlXG5gYGAifQ== -->
 <pre class="r"><code>bike[7,]$age</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQ1XG4ifQ== -->
+<pre><code>[1] 45</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>1b. How many of the first 10 riders in the dataset ride daily?</p>
@@ -206,6 +209,13 @@ bike &lt;- BikeData
 <pre class="r"><code>#Creating a table of the cycling frequencies for the first ten riders
 table(bike[1:10,]$cyc_freq)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gICAgICAgICAgICAgICAgICBEYWlseSAgTGVzcyB0aGFuIG9uY2UgYSBtb250aCBTZXZlcmFsIHRpbWVzIHBlciBtb250aCBcbiAgICAgICAgICAgICAgICAgICAgICAzICAgICAgICAgICAgICAgICAgICAgICAxICAgICAgICAgICAgICAgICAgICAgICAxIFxuIFNldmVyYWwgdGltZXMgcGVyIHdlZWsgXG4gICAgICAgICAgICAgICAgICAgICAgNSBcbiJ9 -->
+<pre><code>
+                  Daily  Less than once a month Several times per month 
+                      3                       1                       1 
+ Several times per week 
+                      5 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>We can see 3 of the first 10 riders in the dataset ride daily</p>
@@ -227,6 +237,11 @@ female_speed_lessthan1month &lt;-female_riding_stat[1,]$speed</code></pre>
 <pre class="r"><code># Find the number of students in the dataset
 table(bike$student)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gIDAgICAxIFxuMTA3ICAxNCBcbiJ9 -->
+<pre><code>
+  0   1 
+107  14 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ol style="list-style-type: decimal">
@@ -251,6 +266,13 @@ Answer: 9</li>
 <pre class="r"><code># Find how often the students ride, using the new dataframe
 table(student$cyc_freq)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gICAgICAgICAgICAgICAgICBEYWlseSAgTGVzcyB0aGFuIG9uY2UgYSBtb250aCBTZXZlcmFsIHRpbWVzIHBlciBtb250aCBcbiAgICAgICAgICAgICAgICAgICAgICA4ICAgICAgICAgICAgICAgICAgICAgICAwICAgICAgICAgICAgICAgICAgICAgICAwIFxuIFNldmVyYWwgdGltZXMgcGVyIHdlZWsgXG4gICAgICAgICAgICAgICAgICAgICAgNiBcbiJ9 -->
+<pre><code>
+                  Daily  Less than once a month Several times per month 
+                      8                       0                       0 
+ Several times per week 
+                      6 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ol start="3" style="list-style-type: decimal">
@@ -275,6 +297,9 @@ Answer: num[1:14]</p>
 <pre class="r"><code># Find average distance ridden
 mean(distance)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDYuMjU3ODU3XG4ifQ== -->
+<pre><code>[1] 6.257857</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>5.How far do students ride on average? (Round to the nearest 0.01)<br />
@@ -304,6 +329,13 @@ Answer:47</p>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoYmlrZSRjeWNfZnJlcSlcbmBgYCJ9 -->
 <pre class="r"><code>table(bike$cyc_freq)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gICAgICAgICAgICAgICAgICBEYWlseSAgTGVzcyB0aGFuIG9uY2UgYSBtb250aCBTZXZlcmFsIHRpbWVzIHBlciBtb250aCBcbiAgICAgICAgICAgICAgICAgICAgIDQ3ICAgICAgICAgICAgICAgICAgICAgICAyICAgICAgICAgICAgICAgICAgICAgIDE0IFxuIFNldmVyYWwgdGltZXMgcGVyIHdlZWsgXG4gICAgICAgICAgICAgICAgICAgICA1OCBcbiJ9 -->
+<pre><code>
+                  Daily  Less than once a month Several times per month 
+                     47                       2                      14 
+ Several times per week 
+                     58 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>2.How many of the daily riders are male?<br />
@@ -313,6 +345,11 @@ Answer: 38</p>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoYmlrZSRnZW5kZXJbYmlrZSRjeWNfZnJlcSA9PSdEYWlseSddKVxuYGBgIn0= -->
 <pre class="r"><code>table(bike$gender[bike$cyc_freq =='Daily'])</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gRiAgTSBcbiA5IDM4IFxuIn0= -->
+<pre><code>
+ F  M 
+ 9 38 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>3.What is the average age of daily riders? (Round to 1 decimal place.)<br />
@@ -322,6 +359,9 @@ Answer: 33.7</p>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihiaWtlJGFnZVtiaWtlJGN5Y19mcmVxPT0nRGFpbHknXSlcbmBgYCJ9 -->
 <pre class="r"><code>mean(bike$age[bike$cyc_freq=='Daily'])</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMzLjY1OTU3XG4ifQ== -->
+<pre><code>[1] 33.65957</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>4.What is the average age of the female daily riders? (Round to 1 decimal place)<br />
@@ -331,6 +371,9 @@ Answer:32.6</p>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihmZW1hbGVfcmlkZXJzJGFnZVtmZW1hbGVfcmlkZXJzJGN5Y19mcmVxPT0nRGFpbHknXSlcbmBgYCJ9 -->
 <pre class="r"><code>mean(female_riders$age[female_riders$cyc_freq=='Daily'])</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMyLjU1NTU2XG4ifQ== -->
+<pre><code>[1] 32.55556</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>5.What is the average age of the male daily riders? (Round to 1 decimal place.)<br />
@@ -341,6 +384,9 @@ Answer:33.9</p>
 <pre class="r"><code>male_riders &lt;- bike[bike$gender=='M',]
 mean(male_riders$age[male_riders$cyc_freq=='Daily'])</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMzLjkyMTA1XG4ifQ== -->
+<pre><code>[1] 33.92105</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>6.How many daily male riders are age 30 or older?<br />
@@ -350,12 +396,15 @@ Answer:25</p>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubnJvdyhtYWxlX3JpZGVyc1ttYWxlX3JpZGVycyRjeWNfZnJlcT09J0RhaWx5JyAmIG1hbGVfcmlkZXJzJGFnZSA+PSAzMCxdKVxuYGBgIn0= -->
 <pre class="r"><code>nrow(male_riders[male_riders$cyc_freq=='Daily' &amp; male_riders$age &gt;= 30,])</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDI1XG4ifQ== -->
+<pre><code>[1] 25</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiSW50cm9kdWN0aW9uIHRvIERhdGEiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICB0aGVtZTogY2VydWxlYW4KLS0tCgoqKkxhYiAxOiBDeWNsaW5nIGluIEF1c3RpbioqIAoKSW4gMjAxMSwgcmVzZWFyY2hlcnMgYXQgdGhlIFRleGFzIFRyYW5zcG9ydGF0aW9uIEluc3RpdHV0ZSBhbmQgdGhlIENlbnRlciBmb3IgVHJhbnNwb3J0YXRpb24gUmVzZWFyY2ggYXQgVVQgQXVzdGluIHJhbiBhbiBhZHZlcnRpc2luZyBjYW1wYWlnbiBhaW1lZCBhdCByZWNydWl0aW5nIEF1c3RpbiBjeWNsaXN0cyB0byBqb2luIHRoZSBTb3V0aCBDb25ncmVzcyBCaWtlIE1hcHBpbmcgUHJvamVjdC4gIEFzIG1lbWJlcnMgb2YgdGhlIHByb2plY3QsIGN5Y2xpc3RzIGRvd25sb2FkZWQgYW5kIHVzZWQgQ3ljbGUgVHJhY2tzLCBhIHNtYXJ0cGhvbmUgYXBwIGRldmVsb3BlZCBieSB0aGUgU2FuIEZyYW5jaXNjbyBDb3VudHkgVHJhbnNwb3J0YXRpb24gQXV0aG9yaXR5IHRvIHRyYWNrIHdoZXJlIHBlb3BsZSBhcmUgcmlkaW5nIHRoZWlyIGJpa2VzIGJhc2VkIG9uIHRoZWlyIEdQUyBwb2ludHMuICBUaGUgZ29hbCB3YXMgdG8gZ2FpbiBuZXcgaW5mb3JtYXRpb24gYWJvdXQgYmlrZSBjb21tdXRpbmcgcGF0dGVybnMgYW5kIHRoaXMgZGF0YSBzZXQgaXMgYmFzZWQgb24gdGhlIHJlc3VsdHMgb2YgdGhlIHN0dWR5OiAzNjAwIHRyaXBzIHRyYWNrZWQgZnJvbSAzMTUgdXNlcnMgb3ZlciBhIDYgbW9udGggcGVyaW9kLiAgIERhdGEgaW5jbHVkZXMgZGlzdGFuY2VzIHRyYXZlbGVkLCBzcGVlZCBvZiB0cmF2ZWwsIGFuZCByZWFzb25zIGZvciB0cmF2ZWwgYW1vbmcgb3RoZXIgdmFyaWFibGVzLgoKIyMjIFByZS1MYWIgU2VjdGlvbiAKCioqUHJpbWFyeSBSZXNlYXJjaCBRdWVzdGlvbioqIAoKSW4gdGhpcyBQcmUgTGFiLCB3ZSB3aWxsIGFzayBhIHF1ZXN0aW9uIGFib3V0IHRoZSBiaWtlIGRhdGFzZXQ6ICAKCkhvdyBtYW55IG9mIHRoZSBjeWNsaXN0cyB3ZXJlIHN0dWRlbnRzLCBob3cgb2Z0ZW4gZGlkIHRoZXkgcmlkZSwgYW5kIHdoYXQgd2FzIHRoZSBhdmVyYWdlIGRpc3RhbmNlIHRoZXkgcm9kZT8KCmBgYHtyfQojTG9hZGluZyB0aGUgZGF0YXNldHMgdGhyb3VnaCBTRFNGb3VuZGF0aW9ucyBwYWNrYWdlCmxpYnJhcnkoU0RTRm91bmRhdGlvbnMpCmJpa2UgPC0gQmlrZURhdGEgCiNGb2xsb3dpbmcgY29tbWFuZCBnaXZlcyB0aGUgZGF0YSBzdHJ1Y3R1cmUgb2YgQmlrZURhdGEgZGF0YXNldAo/QmlrZURhdGEKYGBgCgoqUmVmbGVjdCBvbiB0aGUgcXVlc3Rpb24gc2VjdGlvbjoqCgoxYS4gV2hhdCBpcyB0aGUgYWdlIG9mIHRoZSA3dGggcmlkZXIgaW4gdGhlIGRhdGFzZXQ/CgpgYGB7cn0KYmlrZVs3LF0kYWdlCmBgYAoKMWIuIEhvdyBtYW55IG9mIHRoZSBmaXJzdCAxMCByaWRlcnMgaW4gdGhlIGRhdGFzZXQgcmlkZSBkYWlseT8KYGBge3J9CiNDcmVhdGluZyBhIHRhYmxlIG9mIHRoZSBjeWNsaW5nIGZyZXF1ZW5jaWVzIGZvciB0aGUgZmlyc3QgdGVuIHJpZGVycwp0YWJsZShiaWtlWzE6MTAsXSRjeWNfZnJlcSkKYGBgCldlIGNhbiBzZWUgMyBvZiB0aGUgZmlyc3QgMTAgcmlkZXJzIGluIHRoZSBkYXRhc2V0IHJpZGUgZGFpbHkKCjFjLiBXaGF0IGlzIHRoZSBzcGVlZCBvZiB0aGUgZmlyc3QgZmVtYWxlIHdobyBjeWNsZXMgbGVzcyB0aGFuIG9uZSB0aW1lIHBlciBtb250aCAoaW4gbWlsZXMvaG91cik/CgpgYGB7cn0KZmVtYWxlX3JpZGVycyA8LSBiaWtlW2Jpa2UkZ2VuZGVyID09ICdGJyxdCmZlbWFsZV9yaWRpbmdfc3RhdCA8LSBmZW1hbGVfcmlkZXJzW2ZlbWFsZV9yaWRlcnMkY3ljX2ZyZXEgPT0gJ0xlc3MgdGhhbiBvbmNlIGEgbW9udGgnLF0KZmVtYWxlX3NwZWVkX2xlc3N0aGFuMW1vbnRoIDwtZmVtYWxlX3JpZGluZ19zdGF0WzEsXSRzcGVlZApgYGAKVGhlIHNwZWVkIG9mIHRoZSBmaXJzdCBmZW1hbGUgd2hvIGN5Y2xlcyBsZXNzIHRoYW4gb25lIHRpbWUgcGVyIG1vbnRoIGlzIDguMSBtaWxlcy9ob3VyCgoKUHJlcGFyZSBhbmQgQ29uZHVjdCB0aGUgYW5hbHlzaXMgc2VjdGlvbjoKCmBgYHtyfQojIEZpbmQgdGhlIG51bWJlciBvZiBzdHVkZW50cyBpbiB0aGUgZGF0YXNldAp0YWJsZShiaWtlJHN0dWRlbnQpCmBgYAoxLiBIb3cgbWFueSBzdHVkZW50cyBhcmUgaW4gdGhlIGRhdGFzZXQ/ICAgIApBbnN3ZXI6IDE0CgoKYGBge3J9CiMgUHVsbCBvdXQgc3R1ZGVudCBkYXRhIGludG8gYSBuZXcgZGF0YWZyYW1lCnN0dWRlbnQgPC1iaWtlW2Jpa2Ukc3R1ZGVudD09MSxdCmBgYAoyLiBIb3cgbWFueSB2YXJpYWJsZXMgYXJlIGluIHRoZSBuZXcgZGF0YSBmcmFtZSAic3R1ZGVudCI/ICAgIApBbnN3ZXI6IDkKCgpgYGB7cn0KIyBGaW5kIGhvdyBvZnRlbiB0aGUgc3R1ZGVudHMgcmlkZSwgdXNpbmcgdGhlIG5ldyBkYXRhZnJhbWUKdGFibGUoc3R1ZGVudCRjeWNfZnJlcSkKYGBgCjMuIFdlIHdhbnQgdG8ga25vdyBob3cgb2Z0ZW4gdGhlIHN0dWRlbnRzIHJpZGUuIFdoYXQgaXMgdGhlIG1vc3QgZnJlcXVlbnRseSBvYnNlcnZlZCByZXNwb25zZT8gICAgCkFuc3dlcjogRGFpbHkKCmBgYHtyfQojIENyZWF0ZSBhIHZlY3RvciBmb3IgdGhlIGRpc3RhbmNlIHZhcmlhYmxlCmRpc3RhbmNlIDwtc3R1ZGVudCRkaXN0YW5jZQpgYGAKNGEuIFdoYXQgZG9lcyB0aGlzIHZlY3RvciBjb25zaXN0IG9mPyAgICAgCkFuc3dlcjpJdCBpcyBhIHN0cmluZyBvZiBudW1iZXJzLCBlYWNoIG9mIHdoaWNoIGlzIHRoZSBkaXN0YW5jZSByaWRkZW4gYnkgYSBzdHVkZW50IGluIHRoZSBkYXRhc2V0LiBjb3JyZWN0Cgo0Yi4gSG93IGlzIHRoZSB2ZWN0b3IgImRpc3RhbmNlIiBkZXNjcmliZWQgaW4gdGhlIHdvcmtzcGFjZT8gICAgICAgICAKQW5zd2VyOiBudW1bMToxNF0KYGBge3J9CiMgRmluZCBhdmVyYWdlIGRpc3RhbmNlIHJpZGRlbgptZWFuKGRpc3RhbmNlKQpgYGAKNS5Ib3cgZmFyIGRvIHN0dWRlbnRzIHJpZGUgb24gYXZlcmFnZT8gKFJvdW5kIHRvIHRoZSBuZWFyZXN0IDAuMDEpICAgICAKQW5zd2VyOiA2LjI2IG1pbGVzCgojIyMgTGFiIFNlY3Rpb24KCioqUHJpbWFyeSBSZXNlYXJjaCBRdWVzdGlvbioqCgpIb3cgbWFueSBvZiB0aGUgY3ljbGlzdHMgcm9kZSBkYWlseSwgaG93IG1hbnkgb2YgdGhlc2UgcmlkZXJzIHdlcmUgbWFsZSBhbmQgaG93IG1hbnkgZmVtYWxlLCBhbmQgd2hhdCB3aGF0IHdlcmUgdGhlaXIgYXZlcmFnZSBhZ2VzPyAgCgoqKlJlZmxlY3Qgb24gdGhlIFF1ZXN0aW9uKioKCjEuIEluIHRoaXMgZXhhbXBsZSwgd2hhdCBpcyB0aGUgbmV3IG5hbWUgZm9yICJCaWtlRGF0YSI/CmJpa2UgPC0gQmlrZURhdGEgICAgCkFuczogYmlrZQoKMi4gSW4gdGhpcyBleGFtcGxlLCB3aGljaCB2YXJpYWJsZSBpcyBiZWluZyB1c2VkIHRvIGlkZW50aWZ5IHRoZSBjYXNlcyB0aGF0IHdpbGwgYmUgaW5jbHVkZWQgaW4gYSBuZXcgZGF0YWZyYW1lIGNhbGxlZCAibWFsZXM/IiAgIAptYWxlcyA8LSBiaWtlW2Jpa2UkZ2VuZGVyID09ICdNJywgXQpBbnM6IGdlbmRlcgoKMy4gSW4gdGhpcyBleGFtcGxlLCBhIHZlY3RvciBjYWxsZWQgIm1hbGVfdGltZXMiIHdpbGwgaW5jbHVkZSBhIHN0cmluZyBvZiB2YWx1ZXMgZnJvbSB3aGljaCBkYXRhZnJhbWU/ICAgIAptYWxlX3RpbWVzIDwtIG1hbGVzJHRpbWVzCkFuczogbWFsZXMKCjQuIElmIHdlIHdhbnQgdG8gZmluZCB0aGUgbWVhbiByaWRlIHRpbWU6ICAgCm1lYW4obWFsZV90aW1lcykKCjUuIFF1ZXN0aW9uIHRoYXQgd2lsbCByZXF1aXJlIHN1YnNldHRpbmcgdGhlIGRhdGEuIApBbnN3ZXI6IEhvdyBtYW55IGRhaWx5IHJpZGVycyBhcmUgaW4gdGhlIGRhdGFzZXQgYW5kIHdoYXQgaXMgdGhlaXIgYXZlcmFnZSBhZ2U/CgoqKkFuYWx5c2UgdGhlIGRhdGEqKgoKMS5Ib3cgbWFueSBkYWlseSByaWRlcnMgYXJlIGluIHRoZSBkYXRhc2V0PyAgCkFuc3dlcjo0NwpgYGB7cn0KdGFibGUoYmlrZSRjeWNfZnJlcSkKYGBgCjIuSG93IG1hbnkgb2YgdGhlIGRhaWx5IHJpZGVycyBhcmUgbWFsZT8gICAKQW5zd2VyOiAzOApgYGB7cn0KdGFibGUoYmlrZSRnZW5kZXJbYmlrZSRjeWNfZnJlcSA9PSdEYWlseSddKQpgYGAKMy5XaGF0IGlzIHRoZSBhdmVyYWdlIGFnZSBvZiBkYWlseSByaWRlcnM/IChSb3VuZCB0byAxIGRlY2ltYWwgcGxhY2UuKSAgICAgIApBbnN3ZXI6IDMzLjcKYGBge3J9Cm1lYW4oYmlrZSRhZ2VbYmlrZSRjeWNfZnJlcT09J0RhaWx5J10pCmBgYAo0LldoYXQgaXMgdGhlIGF2ZXJhZ2UgYWdlIG9mIHRoZSBmZW1hbGUgZGFpbHkgcmlkZXJzPyAoUm91bmQgdG8gMSBkZWNpbWFsIHBsYWNlKSAgIApBbnN3ZXI6MzIuNgpgYGB7cn0KbWVhbihmZW1hbGVfcmlkZXJzJGFnZVtmZW1hbGVfcmlkZXJzJGN5Y19mcmVxPT0nRGFpbHknXSkKYGBgCjUuV2hhdCBpcyB0aGUgYXZlcmFnZSBhZ2Ugb2YgdGhlIG1hbGUgZGFpbHkgcmlkZXJzPyAoUm91bmQgdG8gMSBkZWNpbWFsIHBsYWNlLikgIApBbnN3ZXI6MzMuOQpgYGB7cn0KbWFsZV9yaWRlcnMgPC0gYmlrZVtiaWtlJGdlbmRlcj09J00nLF0KbWVhbihtYWxlX3JpZGVycyRhZ2VbbWFsZV9yaWRlcnMkY3ljX2ZyZXE9PSdEYWlseSddKQpgYGAKNi5Ib3cgbWFueSBkYWlseSBtYWxlIHJpZGVycyBhcmUgYWdlIDMwIG9yIG9sZGVyPyAgICAgIApBbnN3ZXI6MjUKYGBge3J9Cm5yb3cobWFsZV9yaWRlcnNbbWFsZV9yaWRlcnMkY3ljX2ZyZXE9PSdEYWlseScgJiBtYWxlX3JpZGVycyRhZ2UgPj0gMzAsXSkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiSW50cm9kdWN0aW9uIHRvIERhdGEiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICB0aGVtZTogY2VydWxlYW4KLS0tCgoqKkxhYiAxOiBDeWNsaW5nIGluIEF1c3RpbioqIAoKSW4gMjAxMSwgcmVzZWFyY2hlcnMgYXQgdGhlIFRleGFzIFRyYW5zcG9ydGF0aW9uIEluc3RpdHV0ZSBhbmQgdGhlIENlbnRlciBmb3IgVHJhbnNwb3J0YXRpb24gUmVzZWFyY2ggYXQgVVQgQXVzdGluIHJhbiBhbiBhZHZlcnRpc2luZyBjYW1wYWlnbiBhaW1lZCBhdCByZWNydWl0aW5nIEF1c3RpbiBjeWNsaXN0cyB0byBqb2luIHRoZSBTb3V0aCBDb25ncmVzcyBCaWtlIE1hcHBpbmcgUHJvamVjdC4gIEFzIG1lbWJlcnMgb2YgdGhlIHByb2plY3QsIGN5Y2xpc3RzIGRvd25sb2FkZWQgYW5kIHVzZWQgQ3ljbGUgVHJhY2tzLCBhIHNtYXJ0cGhvbmUgYXBwIGRldmVsb3BlZCBieSB0aGUgU2FuIEZyYW5jaXNjbyBDb3VudHkgVHJhbnNwb3J0YXRpb24gQXV0aG9yaXR5IHRvIHRyYWNrIHdoZXJlIHBlb3BsZSBhcmUgcmlkaW5nIHRoZWlyIGJpa2VzIGJhc2VkIG9uIHRoZWlyIEdQUyBwb2ludHMuICBUaGUgZ29hbCB3YXMgdG8gZ2FpbiBuZXcgaW5mb3JtYXRpb24gYWJvdXQgYmlrZSBjb21tdXRpbmcgcGF0dGVybnMgYW5kIHRoaXMgZGF0YSBzZXQgaXMgYmFzZWQgb24gdGhlIHJlc3VsdHMgb2YgdGhlIHN0dWR5OiAzNjAwIHRyaXBzIHRyYWNrZWQgZnJvbSAzMTUgdXNlcnMgb3ZlciBhIDYgbW9udGggcGVyaW9kLiAgIERhdGEgaW5jbHVkZXMgZGlzdGFuY2VzIHRyYXZlbGVkLCBzcGVlZCBvZiB0cmF2ZWwsIGFuZCByZWFzb25zIGZvciB0cmF2ZWwgYW1vbmcgb3RoZXIgdmFyaWFibGVzLgoKIyMjIFByZS1MYWIgU2VjdGlvbiAKCioqUHJpbWFyeSBSZXNlYXJjaCBRdWVzdGlvbioqIAoKSW4gdGhpcyBQcmUgTGFiLCB3ZSB3aWxsIGFzayBhIHF1ZXN0aW9uIGFib3V0IHRoZSBiaWtlIGRhdGFzZXQ6ICAKCkhvdyBtYW55IG9mIHRoZSBjeWNsaXN0cyB3ZXJlIHN0dWRlbnRzLCBob3cgb2Z0ZW4gZGlkIHRoZXkgcmlkZSwgYW5kIHdoYXQgd2FzIHRoZSBhdmVyYWdlIGRpc3RhbmNlIHRoZXkgcm9kZT8KCmBgYHtyfQojTG9hZGluZyB0aGUgZGF0YXNldHMgdGhyb3VnaCBTRFNGb3VuZGF0aW9ucyBwYWNrYWdlCmxpYnJhcnkoU0RTRm91bmRhdGlvbnMpCmJpa2UgPC0gQmlrZURhdGEgCiNGb2xsb3dpbmcgY29tbWFuZCBnaXZlcyB0aGUgZG9jdW1lbnRhdGlvbiBvZiBCaWtlRGF0YSBkYXRhc2V0Cj9CaWtlRGF0YQpgYGAKCipSZWZsZWN0IG9uIHRoZSBxdWVzdGlvbiBzZWN0aW9uOioKCjFhLiBXaGF0IGlzIHRoZSBhZ2Ugb2YgdGhlIDd0aCByaWRlciBpbiB0aGUgZGF0YXNldD8KCmBgYHtyfQpiaWtlWzcsXSRhZ2UKYGBgCgoxYi4gSG93IG1hbnkgb2YgdGhlIGZpcnN0IDEwIHJpZGVycyBpbiB0aGUgZGF0YXNldCByaWRlIGRhaWx5PwpgYGB7cn0KI0NyZWF0aW5nIGEgdGFibGUgb2YgdGhlIGN5Y2xpbmcgZnJlcXVlbmNpZXMgZm9yIHRoZSBmaXJzdCB0ZW4gcmlkZXJzCnRhYmxlKGJpa2VbMToxMCxdJGN5Y19mcmVxKQpgYGAKV2UgY2FuIHNlZSAzIG9mIHRoZSBmaXJzdCAxMCByaWRlcnMgaW4gdGhlIGRhdGFzZXQgcmlkZSBkYWlseQoKMWMuIFdoYXQgaXMgdGhlIHNwZWVkIG9mIHRoZSBmaXJzdCBmZW1hbGUgd2hvIGN5Y2xlcyBsZXNzIHRoYW4gb25lIHRpbWUgcGVyIG1vbnRoIChpbiBtaWxlcy9ob3VyKT8KCmBgYHtyfQpmZW1hbGVfcmlkZXJzIDwtIGJpa2VbYmlrZSRnZW5kZXIgPT0gJ0YnLF0KZmVtYWxlX3JpZGluZ19zdGF0IDwtIGZlbWFsZV9yaWRlcnNbZmVtYWxlX3JpZGVycyRjeWNfZnJlcSA9PSAnTGVzcyB0aGFuIG9uY2UgYSBtb250aCcsXQpmZW1hbGVfc3BlZWRfbGVzc3RoYW4xbW9udGggPC1mZW1hbGVfcmlkaW5nX3N0YXRbMSxdJHNwZWVkCmBgYApUaGUgc3BlZWQgb2YgdGhlIGZpcnN0IGZlbWFsZSB3aG8gY3ljbGVzIGxlc3MgdGhhbiBvbmUgdGltZSBwZXIgbW9udGggaXMgOC4xIG1pbGVzL2hvdXIKCgpQcmVwYXJlIGFuZCBDb25kdWN0IHRoZSBhbmFseXNpcyBzZWN0aW9uOgoKYGBge3J9CiMgRmluZCB0aGUgbnVtYmVyIG9mIHN0dWRlbnRzIGluIHRoZSBkYXRhc2V0CnRhYmxlKGJpa2Ukc3R1ZGVudCkKYGBgCjEuIEhvdyBtYW55IHN0dWRlbnRzIGFyZSBpbiB0aGUgZGF0YXNldD8gICAgCkFuc3dlcjogMTQKCgpgYGB7cn0KIyBQdWxsIG91dCBzdHVkZW50IGRhdGEgaW50byBhIG5ldyBkYXRhZnJhbWUKc3R1ZGVudCA8LWJpa2VbYmlrZSRzdHVkZW50PT0xLF0KYGBgCjIuIEhvdyBtYW55IHZhcmlhYmxlcyBhcmUgaW4gdGhlIG5ldyBkYXRhIGZyYW1lICJzdHVkZW50Ij8gICAgCkFuc3dlcjogOQoKCmBgYHtyfQojIEZpbmQgaG93IG9mdGVuIHRoZSBzdHVkZW50cyByaWRlLCB1c2luZyB0aGUgbmV3IGRhdGFmcmFtZQp0YWJsZShzdHVkZW50JGN5Y19mcmVxKQpgYGAKMy4gV2Ugd2FudCB0byBrbm93IGhvdyBvZnRlbiB0aGUgc3R1ZGVudHMgcmlkZS4gV2hhdCBpcyB0aGUgbW9zdCBmcmVxdWVudGx5IG9ic2VydmVkIHJlc3BvbnNlPyAgICAKQW5zd2VyOiBEYWlseQoKYGBge3J9CiMgQ3JlYXRlIGEgdmVjdG9yIGZvciB0aGUgZGlzdGFuY2UgdmFyaWFibGUKZGlzdGFuY2UgPC1zdHVkZW50JGRpc3RhbmNlCmBgYAo0YS4gV2hhdCBkb2VzIHRoaXMgdmVjdG9yIGNvbnNpc3Qgb2Y/ICAgICAKQW5zd2VyOkl0IGlzIGEgc3RyaW5nIG9mIG51bWJlcnMsIGVhY2ggb2Ygd2hpY2ggaXMgdGhlIGRpc3RhbmNlIHJpZGRlbiBieSBhIHN0dWRlbnQgaW4gdGhlIGRhdGFzZXQuIGNvcnJlY3QKCjRiLiBIb3cgaXMgdGhlIHZlY3RvciAiZGlzdGFuY2UiIGRlc2NyaWJlZCBpbiB0aGUgd29ya3NwYWNlPyAgICAgICAgIApBbnN3ZXI6IG51bVsxOjE0XQpgYGB7cn0KIyBGaW5kIGF2ZXJhZ2UgZGlzdGFuY2UgcmlkZGVuCm1lYW4oZGlzdGFuY2UpCmBgYAo1LkhvdyBmYXIgZG8gc3R1ZGVudHMgcmlkZSBvbiBhdmVyYWdlPyAoUm91bmQgdG8gdGhlIG5lYXJlc3QgMC4wMSkgICAgIApBbnN3ZXI6IDYuMjYgbWlsZXMKCiMjIyBMYWIgU2VjdGlvbgoKKipQcmltYXJ5IFJlc2VhcmNoIFF1ZXN0aW9uKioKCkhvdyBtYW55IG9mIHRoZSBjeWNsaXN0cyByb2RlIGRhaWx5LCBob3cgbWFueSBvZiB0aGVzZSByaWRlcnMgd2VyZSBtYWxlIGFuZCBob3cgbWFueSBmZW1hbGUsIGFuZCB3aGF0IHdoYXQgd2VyZSB0aGVpciBhdmVyYWdlIGFnZXM/ICAKCioqUmVmbGVjdCBvbiB0aGUgUXVlc3Rpb24qKgoKMS4gSW4gdGhpcyBleGFtcGxlLCB3aGF0IGlzIHRoZSBuZXcgbmFtZSBmb3IgIkJpa2VEYXRhIj8KYmlrZSA8LSBCaWtlRGF0YSAgICAKQW5zOiBiaWtlCgoyLiBJbiB0aGlzIGV4YW1wbGUsIHdoaWNoIHZhcmlhYmxlIGlzIGJlaW5nIHVzZWQgdG8gaWRlbnRpZnkgdGhlIGNhc2VzIHRoYXQgd2lsbCBiZSBpbmNsdWRlZCBpbiBhIG5ldyBkYXRhZnJhbWUgY2FsbGVkICJtYWxlcz8iICAgCm1hbGVzIDwtIGJpa2VbYmlrZSRnZW5kZXIgPT0gJ00nLCBdCkFuczogZ2VuZGVyCgozLiBJbiB0aGlzIGV4YW1wbGUsIGEgdmVjdG9yIGNhbGxlZCAibWFsZV90aW1lcyIgd2lsbCBpbmNsdWRlIGEgc3RyaW5nIG9mIHZhbHVlcyBmcm9tIHdoaWNoIGRhdGFmcmFtZT8gICAgCm1hbGVfdGltZXMgPC0gbWFsZXMkdGltZXMKQW5zOiBtYWxlcwoKNC4gSWYgd2Ugd2FudCB0byBmaW5kIHRoZSBtZWFuIHJpZGUgdGltZTogICAKbWVhbihtYWxlX3RpbWVzKQoKNS4gUXVlc3Rpb24gdGhhdCB3aWxsIHJlcXVpcmUgc3Vic2V0dGluZyB0aGUgZGF0YS4gCkFuc3dlcjogSG93IG1hbnkgZGFpbHkgcmlkZXJzIGFyZSBpbiB0aGUgZGF0YXNldCBhbmQgd2hhdCBpcyB0aGVpciBhdmVyYWdlIGFnZT8KCioqQW5hbHlzZSB0aGUgZGF0YSoqCgoxLkhvdyBtYW55IGRhaWx5IHJpZGVycyBhcmUgaW4gdGhlIGRhdGFzZXQ/ICAKQW5zd2VyOjQ3CmBgYHtyfQp0YWJsZShiaWtlJGN5Y19mcmVxKQpgYGAKMi5Ib3cgbWFueSBvZiB0aGUgZGFpbHkgcmlkZXJzIGFyZSBtYWxlPyAgIApBbnN3ZXI6IDM4CmBgYHtyfQp0YWJsZShiaWtlJGdlbmRlcltiaWtlJGN5Y19mcmVxID09J0RhaWx5J10pCmBgYAozLldoYXQgaXMgdGhlIGF2ZXJhZ2UgYWdlIG9mIGRhaWx5IHJpZGVycz8gKFJvdW5kIHRvIDEgZGVjaW1hbCBwbGFjZS4pICAgICAgCkFuc3dlcjogMzMuNwpgYGB7cn0KbWVhbihiaWtlJGFnZVtiaWtlJGN5Y19mcmVxPT0nRGFpbHknXSkKYGBgCjQuV2hhdCBpcyB0aGUgYXZlcmFnZSBhZ2Ugb2YgdGhlIGZlbWFsZSBkYWlseSByaWRlcnM/IChSb3VuZCB0byAxIGRlY2ltYWwgcGxhY2UpICAgCkFuc3dlcjozMi42CmBgYHtyfQptZWFuKGZlbWFsZV9yaWRlcnMkYWdlW2ZlbWFsZV9yaWRlcnMkY3ljX2ZyZXE9PSdEYWlseSddKQpgYGAKNS5XaGF0IGlzIHRoZSBhdmVyYWdlIGFnZSBvZiB0aGUgbWFsZSBkYWlseSByaWRlcnM/IChSb3VuZCB0byAxIGRlY2ltYWwgcGxhY2UuKSAgCkFuc3dlcjozMy45CmBgYHtyfQptYWxlX3JpZGVycyA8LSBiaWtlW2Jpa2UkZ2VuZGVyPT0nTScsXQptZWFuKG1hbGVfcmlkZXJzJGFnZVttYWxlX3JpZGVycyRjeWNfZnJlcT09J0RhaWx5J10pCmBgYAo2LkhvdyBtYW55IGRhaWx5IG1hbGUgcmlkZXJzIGFyZSBhZ2UgMzAgb3Igb2xkZXI/ICAgICAgCkFuc3dlcjoyNQpgYGB7cn0KbnJvdyhtYWxlX3JpZGVyc1ttYWxlX3JpZGVycyRjeWNfZnJlcT09J0RhaWx5JyAmIG1hbGVfcmlkZXJzJGFnZSA+PSAzMCxdKQpgYGAKCg==</div>
 
 
 
