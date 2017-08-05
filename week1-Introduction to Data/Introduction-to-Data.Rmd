@@ -1,8 +1,10 @@
 ---
 title: "Introduction to Data"
-output: 
-  html_notebook: 
+output:
+  html_document: default
+  html_notebook:
     theme: cerulean
+  pdf_document: default
 ---
 
 **Lab 1: Cycling in Austin** 
