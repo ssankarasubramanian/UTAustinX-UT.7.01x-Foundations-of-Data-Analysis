@@ -1,0 +1,153 @@
+---
+title: "Introduction to Data"
+output: 
+  html_notebook: 
+    theme: cerulean
+---
+
+**Lab 1: Cycling in Austin** 
+
+In 2011, researchers at the Texas Transportation Institute and the Center for Transportation Research at UT Austin ran an advertising campaign aimed at recruiting Austin cyclists to join the South Congress Bike Mapping Project.  As members of the project, cyclists downloaded and used Cycle Tracks, a smartphone app developed by the San Francisco County Transportation Authority to track where people are riding their bikes based on their GPS points.  The goal was to gain new information about bike commuting patterns and this data set is based on the results of the study: 3600 trips tracked from 315 users over a 6 month period.   Data includes distances traveled, speed of travel, and reasons for travel among other variables.
+
+### Pre-Lab Section 
+
+**Primary Research Question** 
+
+In this Pre Lab, we will ask a question about the bike dataset:  
+
+How many of the cyclists were students, how often did they ride, and what was the average distance they rode?
+
+```{r}
+#Loading the datasets through SDSFoundations package
+library(SDSFoundations)
+bike <- BikeData 
+#Following command gives the data structure of BikeData dataset
+?BikeData
+```
+
+*Reflect on the question section:*
+
+1a. What is the age of the 7th rider in the dataset?
+
+```{r}
+bike[7,]$age
+```
+
+1b. How many of the first 10 riders in the dataset ride daily?
+```{r}
+#Creating a table of the cycling frequencies for the first ten riders
+table(bike[1:10,]$cyc_freq)
+```
+We can see 3 of the first 10 riders in the dataset ride daily
+
+1c. What is the speed of the first female who cycles less than one time per month (in miles/hour)?
+
+```{r}
+female_riders <- bike[bike$gender == 'F',]
+female_riding_stat <- female_riders[female_riders$cyc_freq == 'Less than once a month',]
+female_speed_lessthan1month <-female_riding_stat[1,]$speed
+```
+The speed of the first female who cycles less than one time per month is 8.1 miles/hour
+
+
+Prepare and Conduct the analysis section:
+
+```{r}
+# Find the number of students in the dataset
+table(bike$student)
+```
+1. How many students are in the dataset?    
+Answer: 14
+
+
+```{r}
+# Pull out student data into a new dataframe
+student <-bike[bike$student==1,]
+```
+2. How many variables are in the new data frame "student"?    
+Answer: 9
+
+
+```{r}
+# Find how often the students ride, using the new dataframe
+table(student$cyc_freq)
+```
+3. We want to know how often the students ride. What is the most frequently observed response?    
+Answer: Daily
+
+```{r}
+# Create a vector for the distance variable
+distance <-student$distance
+```
+4a. What does this vector consist of?     
+Answer:It is a string of numbers, each of which is the distance ridden by a student in the dataset. correct
+
+4b. How is the vector "distance" described in the workspace?         
+Answer: num[1:14]
+```{r}
+# Find average distance ridden
+mean(distance)
+```
+5.How far do students ride on average? (Round to the nearest 0.01)     
+Answer: 6.26 miles
+
+### Lab Section
+
+**Primary Research Question**
+
+How many of the cyclists rode daily, how many of these riders were male and how many female, and what what were their average ages?  
+
+**Reflect on the Question**
+
+1. In this example, what is the new name for "BikeData"?
+bike <- BikeData    
+Ans: bike
+
+2. In this example, which variable is being used to identify the cases that will be included in a new dataframe called "males?"   
+males <- bike[bike$gender == 'M', ]
+Ans: gender
+
+3. In this example, a vector called "male_times" will include a string of values from which dataframe?    
+male_times <- males$times
+Ans: males
+
+4. If we want to find the mean ride time:   
+mean(male_times)
+
+5. Question that will require subsetting the data. 
+Answer: How many daily riders are in the dataset and what is their average age?
+
+**Analyse the data**
+
+1.How many daily riders are in the dataset?  
+Answer:47
+```{r}
+table(bike$cyc_freq)
+```
+2.How many of the daily riders are male?   
+Answer: 38
+```{r}
+table(bike$gender[bike$cyc_freq =='Daily'])
+```
+3.What is the average age of daily riders? (Round to 1 decimal place.)      
+Answer: 33.7
+```{r}
+mean(bike$age[bike$cyc_freq=='Daily'])
+```
+4.What is the average age of the female daily riders? (Round to 1 decimal place)   
+Answer:32.6
+```{r}
+mean(female_riders$age[female_riders$cyc_freq=='Daily'])
+```
+5.What is the average age of the male daily riders? (Round to 1 decimal place.)  
+Answer:33.9
+```{r}
+male_riders <- bike[bike$gender=='M',]
+mean(male_riders$age[male_riders$cyc_freq=='Daily'])
+```
+6.How many daily male riders are age 30 or older?      
+Answer:25
+```{r}
+nrow(male_riders[male_riders$cyc_freq=='Daily' & male_riders$age >= 30,])
+```
+
