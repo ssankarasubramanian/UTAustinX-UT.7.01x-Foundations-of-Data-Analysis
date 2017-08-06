@@ -52,7 +52,7 @@ female_speed_lessthan1month <-female_riding_stat[1,]$speed
 The speed of the first female who cycles less than one time per month is 8.1 miles/hour
 
 
-Prepare and Conduct the analysis section:
+**Prepare and Conduct the analysis section:**
 
 ```{r}
 # Find the number of students in the dataset

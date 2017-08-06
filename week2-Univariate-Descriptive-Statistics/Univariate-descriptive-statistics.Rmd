@@ -1,0 +1,209 @@
+---
+title: "Univariate Descriptive Statistics"
+output: html_notebook
+---
+###Lab 2: Austin Animal Shelter Data   
+
+Have you ever been curious about how long it takes for an animal to be adopted?  To investigate questions like this, we contacted the Austin Animal Shelter and they provided us with information about 473 cats and dogs.  Included in the dataset are information about how the animals arrived at the shelter, their sex, breed, age, weight, and the number of days spent in the shelter.  The data is contained in AnimalData.csv and each variable is described in the codebook file.
+
+### Pre-Lab Section 
+
+**Primary Research Question** 
+
+How many days do animals spend in the shelter before they are adopted?
+
+```{r}
+#Loading the datasets through SDSFoundations package
+library(SDSFoundations)
+animaldata <- AnimalData
+#Following command gives the documentation of AnimalData dataset
+?AnimalData
+```
+1a. How many variables are in this dataset?     
+Answer: 24
+```{r}
+ncol(animaldata)
+```
+1b. How many of the first 10 animals in the dataset were adopted?      
+Answer:4
+```{r}
+nrow(animaldata[1:10,][animaldata[1:10,]$Outcome.Type =='Adoption',])
+```
+1c. Was the first owner-surrendered animal in the dataset neutered?
+Answer: No
+```{r}
+owner_surrender <- animaldata[animaldata$Intake.Type=='Owner Surrender',]
+owner_surrender[1,]$Neutered.Status
+?type
+```
+2a. What variable tells us the length of time an animal stayed in the shelter?
+Ans: Days.Shelter
+
+2b. What type of variable is Days.Shelter?
+Ans: numerical/integer
+```{r}
+class(animaldata$Days.Shelter)
+```
+2c. What variable tells us if the animal was adopted?
+Ans: Outcome.Type
+
+2d. What type of variable is Outcome.Type?
+Ans: categorical/factor
+```{r}
+class(animaldata$Outcome.Type)
+#List possible values the variable holds
+levels(animaldata$Outcome.Type)
+```
+
+**Prepare and Conduct the analysis section:**
+
+How many days do animals spend in the shelter before they are adopted?
+
+```{r}
+#Find the number of animals that were adopted
+table(animaldata$Outcome.Type)
+
+#Pull out only adopted animals
+adopted <- animaldata[animaldata$Outcome.Type=="Adoption",]
+
+#Pull out just the days in shelter for the adopted animals
+daystoadopt <- adopted$Days.Shelter
+```
+
+fivenum(daystoadopt)
+mean(daystoadopt)
+sd(daystoadopt)
+which(animaldata$Days.Shelter==max(daystoadopt))
+
+
+1.How would you describe the shape of the distribution of daystoadopt?    
+Answer: Positively Skewed
+```{r}
+ggplot(aes(x = Days.Shelter), data = adopted) +
+  geom_histogram(binwidth = 10, fill = '#5760AB') +
+  scale_x_continuous(limits = c(0, 230),breaks = seq(0, 230, 20))
+```
+2. Which measures of center and spread should you report for this data?     
+Answer: Median and IQR
+
+3. Numericals values for the following:
+Center:13
+Spread:30
+```{r}
+fivenum(daystoadopt)
+
+```
+It looks like one adopted animal spent much more time in the shelter than the others.
+
+4a. How many days was this animal in the shelter?     
+Answer:211
+```{r}
+daystoadopt[which.max(daystoadopt)]
+```
+4b. What was the z-score for this particular animal? Round to the nearest TWO decimal places.      
+Answer:5.09
+```{r}
+(211-mean(daystoadopt))/sd(daystoadopt)
+```
+5. Why should we NOT report a z-score for this animal, even though we can calculate one?    
+Answer:Distribution is skewed
+
+### Lab Section
+Austin Animal Shelter Data
+
+Have you ever been curious about how long it takes for an animal to be adopted?  To investigate questions like this, we contacted the Austin Animal Shelter and they provided us with information about 473 cats and dogs.  Included in the dataset are information about how the animals arrived at the shelter, their sex, breed, age, weight, and the number of days spent in the shelter.  The data is contained in AnimalData.csv and each variable is described in the codebook file.
+
+**Primary Research Question**
+
+Compare the weight of adult cats and dogs at the shelter.  How typical would it be to find a 13-pound cat?  What about a 13-pound dog?
+
+**Reflect and Analyse the Question**
+
+1a. How many adult dogs are in the shelter?   
+Answer: 226
+```{r}
+#Given an assumptiont that an animal is considered adult if its age is atleast one year
+Adult <- animaldata[animaldata$Age.Intake>=1,]
+table(Adult$Animal.Type)
+```
+1b. How many adult cats are in the shelter?    
+Answer:56
+
+2a. What is the shape of the distribution of weight for adult dogs?
+Answer: Positively skewed
+```{r}
+library(ggplot2)
+AdultDogs <- Adult[Adult$Animal.Type =='Dog',]
+#hist(AdultDogs$Weight)
+#qplot(x=Weight, data= AdultDogs)
+ggplot(aes(x = Weight), data = AdultDogs) +
+  geom_histogram(binwidth = 10, fill = '#F98866') +
+  scale_x_continuous(limits = c(0, 200),breaks = seq(0, 200, 50))
+```
+2b. What is the shape of the distribution of weight for adult cats?
+Answer: Approximately Normal
+```{r}
+AdultCats <- Adult[Adult$Animal.Type =='Cat',]
+hist(AdultCats$Weight)
+ggplot(aes(x = Weight), data = AdultCats) +
+  geom_histogram(binwidth = 1, fill = '#388E8E') +
+  scale_x_continuous(limits = c(0, 20),breaks = seq(0, 20, 4))+
+  scale_y_continuous(limits = c(0, 20),breaks = seq(0, 20, 2))
+
+```
+3a. Which measure of center should be used to describe the average weight of the adult cats?    
+Answer: Mean
+
+3b. Average adult cat weight in pounds (rounded to one decimal place)   
+Answer: 8.6
+```{r}
+mean(AdultCats$Weight)
+```
+4. What is the standard deviation for the weight of the adult cats? Round to two decimal places.   
+Answer: 1.91
+```{r}
+sd(AdultCats$Weight)
+```
+5. What is the z-score of a 13 pound adult cat? Round to one decimal point.   
+Answer: 2.3
+```{r}
+(13-mean(AdultCats$Weight))/sd(AdultCats$Weight)
+```
+6. Which of these best describes the location of a 13 pound adult cat in the shelter distribution?     
+Answer: More than 2 standard deviations above the mean.
+
+7. What proportion of adult cats weigh more than 13 pounds, according to your data? Use the following code to answer this question: Round to three decimal places.   
+Answer: 0.011
+```{r}
+1-pnorm(2.29)
+```
+8a. What quartile would contain a 13-pound adult dog?  
+Answer: First
+
+8b. What percentage of adult dogs in the shelter weigh more than 13 pounds?    
+Answer: Approximately 75%
+
+### Problem Set Section
+
+1a. What was the most common way that dogs arrived in the shelter? (as defined by the “Intake.Type” variable)   
+Answer: Stray
+```{r}
+table(animaldata$Intake.Type)
+```
+1b. What proportion of dogs were brought to the shelter as an owner surrender? (Round to 3 decimal places.)    
+Answer:0.278
+```{r}
+Dogs <- animaldata[animaldata$Animal.Type=='Dog',]
+owner_surrender_dogs <-owner_surrender[owner_surrender$Animal.Type=='Dog',]
+nrow(owner_surrender_dogs)/nrow(Dogs)
+```
+1c. Of the dogs that were brought to the shelter as an owner surrender, how many were returned to their owner?   
+Answer: 2
+```{r}
+table(owner_surrender_dogs$Outcome.Type)
+```
+1d. What was the mean number of days that the dogs referenced in Question 1c spent at the shelter before being returned to their owner? (Round to 1 decimal place.)   
+Answer:3.5
+```{r}
+mean(owner_surrender_dogs$Days.Shelter[owner_surrender_dogs$Outcome.Type=='Return to Owner'])
+```
